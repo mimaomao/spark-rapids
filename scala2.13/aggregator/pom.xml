@@ -67,7 +67,7 @@
             <groupId>com.nvidia</groupId>
             <artifactId>rapids-4-spark-private_${scala.binary.version}</artifactId>
             <version>${spark-rapids-private.version}</version>
-            <classifier>${spark.version.classifier}</classifier>
+            <classifier>spark350</classifier>
         </dependency>
     </dependencies>
     <build>
@@ -751,6 +751,23 @@
                 <property>
                     <name>buildver</name>
                     <value>350</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.nvidia</groupId>
+                    <artifactId>rapids-4-spark-delta-stub_${scala.binary.version}</artifactId>
+                    <version>${project.version}</version>
+                    <classifier>${spark.version.classifier}</classifier>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>release350emr</id>
+            <activation>
+                <property>
+                    <name>buildver</name>
+                    <value>350emr</value>
                 </property>
             </activation>
             <dependencies>
